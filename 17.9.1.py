@@ -1,18 +1,21 @@
+message = "Введите последовательность целых чисел через пробел:\n"
 
-array = input("Введите последовательность целых чисел через пробел:\n")
+array = input(message)
+
 
 while array.replace(" ", "").isdigit() != True:
     print("Введены недопустимые символы.\nИспользуйте только целые числа и пробел")
-    array = input("Введите последовательность целых чисел через пробел:\n")
+    array = input(message)
 
 array = list(map(int, array.split(' ')))
-for i in range(len(array)):
-    idx_min = i
-    for j in range(i, len(array)):
-        if array[j] < array[idx_min]:
-            idx_min = j
-    if i != idx_min:
-        array[i], array[idx_min] = array[idx_min], array[i]
+def sorting(array):
+    for i in range(len(array)):
+        idx_min = i
+        for j in range(i, len(array)):
+            if array[j] < array[idx_min]:
+                idx_min = j
+        if i != idx_min:
+            array[i], array[idx_min] = array[idx_min], array[i]
 
 def binary_search(array, element, left, right):
     if left > right:
@@ -29,6 +32,7 @@ def binary_search(array, element, left, right):
             return f"Ваше число имеет индекс {middle + 1}"
         return binary_search(array, element, middle + 1, right)
 
+sorting(array)
 print(f'Ваш список, отсортированный по возрастанию: {array}')
 element = input('Введите целое число: ')
 while element.isdigit() != True:
