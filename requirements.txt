@@ -1,0 +1,9 @@
+pytest
+selenium
+secrets
+time
+string
+random
+
+termcolor
+allure-python-commons
